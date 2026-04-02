@@ -3,16 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-  <title>⚡ TIC-TAC-TOON | Minimal Duel</title>
+  <title>⚡ TIC-TAC-TOON | Mit Soni</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div class="game-wrapper">
   <div class="game-header">
-    <span class="logo">⚡ TIC-TAC-TOON ⚡</span>
+    <div class="logo">
+      <span class="logo-icon">⚡</span>
+      <span class="logo-text">TIC-TAC-TOON</span>
+    </div>
     <div class="theme-switch" id="themeToggleBtn">
-      <span class="theme-icon" data-theme="dark">🌙</span>
+      <span class="theme-icon active" data-theme="dark">🌙</span>
       <span class="theme-icon" data-theme="light">☀️</span>
     </div>
   </div>
@@ -22,7 +26,7 @@
     <div class="players-flex">
       <div class="player-card">
         <div class="emoji-badge">🎭</div>
-        <input type="text" id="p1Name" class="player-input" placeholder="Player 1" value="Phoenix">
+        <input type="text" id="p1Name" class="player-input" placeholder="Enter your name" value="">
         <div class="symbol-group" data-player="1">
           <div class="symbol-opt" data-sym="X">❌ X</div>
           <div class="symbol-opt" data-sym="O">⭕ O</div>
@@ -30,7 +34,7 @@
       </div>
       <div class="player-card">
         <div class="emoji-badge">🎪</div>
-        <input type="text" id="p2Name" class="player-input" placeholder="Player 2" value="Nova">
+        <input type="text" id="p2Name" class="player-input" placeholder="Enter your name" value="">
         <div class="symbol-group" data-player="2">
           <div class="symbol-opt" data-sym="X">❌ X</div>
           <div class="symbol-opt" data-sym="O">⭕ O</div>
@@ -45,18 +49,18 @@
     <div class="duel-row">
       <div class="fighter" id="leftFighter">
         <div class="fighter-emoji" id="leftEmoji">🎭</div>
-        <div class="fighter-name" id="leftName">Phoenix</div>
+        <div class="fighter-name" id="leftName">Player 1</div>
         <div class="fighter-symbol" id="leftSymbolBadge">X</div>
       </div>
       <div class="vs-badge">⚔️ VS ⚔️</div>
       <div class="fighter" id="rightFighter">
         <div class="fighter-emoji" id="rightEmoji">🎪</div>
-        <div class="fighter-name" id="rightName">Nova</div>
+        <div class="fighter-name" id="rightName">Player 2</div>
         <div class="fighter-symbol" id="rightSymbolBadge">O</div>
       </div>
     </div>
     <div class="board-grid" id="board"></div>
-    <div class="turn-indicator" id="turnText">🎯 Turn: Phoenix (X)</div>
+    <div class="turn-indicator" id="turnText">🎯 Waiting for players...</div>
     <div class="action-row">
       <button id="resetGame" class="sec-btn">🔄 Rematch</button>
       <button id="backToSelect" class="sec-btn">🏠 New Heroes</button>
@@ -64,16 +68,27 @@
   </div>
 </div>
 
-<!-- CELEBRATION MODAL -->
+<!-- CELEBRATION MODAL - Premium Version -->
 <div id="celebModal" class="celeb-modal">
   <div class="celeb-content">
-    <div class="party-emoji">🎉🥳🎊</div>
-    <div class="win-title" id="winnerTitle">CHAMPION!</div>
-    <div id="winnerNameDisplay" style="font-size: 1.2rem; font-weight: 600; margin: 0.5rem 0; color: var(--accent-gold);">Player Name</div>
+    <div class="celeb-fireworks">
+      <span>🎆</span>
+      <span>🎇</span>
+      <span>✨</span>
+    </div>
+    <div class="party-emoji">🏆🥳🎉🏆</div>
+    <div class="win-title" id="winnerTitle">VICTORY!</div>
+    <div id="winnerNameDisplay" class="winner-name-premium">Champion Name</div>
+    <div class="celeb-stars">⭐ ⭐ ⭐</div>
     <button id="closeCeleb" class="celeb-close">⚡ PLAY AGAIN ⚡</button>
     <div id="confettiArea" class="confetti-canvas"></div>
   </div>
 </div>
+
+<!-- FOOTER COPYRIGHT -->
+<footer class="game-footer">
+  <p>© 2026 <span class="creator-name">Mit Soni</span> | All Rights Reserved ✨</p>
+</footer>
 
 <script src="script.js"></script>
 </body>
