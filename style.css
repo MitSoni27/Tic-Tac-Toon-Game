@@ -36,62 +36,13 @@ body.light {
   --accent-x: #dc2626;
   --accent-o: #2563eb;
   --accent-gold: #f59e0b;
-  --accent-purple: #8b5cf6;
-  --border: rgba(0, 0, 0, 0.12);
+  --border: rgba(0, 0, 0, 0.1);
   --card-bg: rgba(255, 245, 235, 0.9);
-  --cell-bg: rgba(255, 250, 245, 0.92);
+  --cell-bg: #ffffff;
   --shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   --glow: 0 0 12px rgba(220, 38, 38, 0.3);
   --btn-bg: linear-gradient(135deg, #f97316, #a855f7);
   --footer-bg: rgba(0, 0, 0, 0.04);
-}
-
-/* Light theme input specific */
-body.light .player-input {
-  background: white;
-  border: 1px solid #d1d5db;
-  color: #1f2937;
-}
-
-body.light .player-input::placeholder {
-  color: #9ca3af;
-  opacity: 1;
-}
-
-body.light .player-input:focus {
-  border-color: var(--accent-gold);
-  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
-}
-
-body.light .symbol-opt {
-  background: white;
-  border: 1px solid #e5e7eb;
-  color: #374151;
-}
-
-body.light .symbol-opt.active {
-  background: rgba(245, 158, 11, 0.15);
-  border-color: var(--accent-gold);
-}
-
-body.light .cell {
-  background: white;
-  border: 1px solid #e5e7eb;
-}
-
-body.light .turn-indicator {
-  background: rgba(0, 0, 0, 0.05);
-  color: #4b5563;
-}
-
-body.light .sec-btn {
-  background: white;
-  border: 1px solid #e5e7eb;
-  color: #374151;
-}
-
-body.light .sec-btn:hover {
-  background: #f3f4f6;
 }
 
 body {
@@ -107,7 +58,6 @@ body {
   position: relative;
 }
 
-/* main container */
 .game-wrapper {
   width: 100%;
   max-width: 700px;
@@ -121,7 +71,6 @@ body {
   margin-bottom: 1rem;
 }
 
-/* header */
 .game-header {
   display: flex;
   justify-content: space-between;
@@ -151,7 +100,6 @@ body {
   color: transparent;
 }
 
-/* theme toggle */
 .theme-switch {
   display: flex;
   align-items: center;
@@ -175,7 +123,6 @@ body {
   color: #1f2937;
 }
 
-/* screens */
 .screen {
   padding: 1.5rem;
   transition: all 0.3s;
@@ -185,7 +132,6 @@ body {
   display: none;
 }
 
-/* ===== SELECTION SCREEN ===== */
 .players-flex {
   display: flex;
   flex-wrap: wrap;
@@ -235,8 +181,26 @@ body {
 }
 
 .player-input::placeholder {
-  color: var(--text-muted);
+  color: #9ca3af;
   font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* Light theme input styles */
+body.light .player-input {
+  background: #ffffff;
+  border-color: #d1d5db;
+  color: #1f2937;
+}
+
+body.light .player-input::placeholder {
+  color: #6b7280;
+  opacity: 1;
+}
+
+body.light .player-input:focus {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
 }
 
 .symbol-group {
@@ -264,6 +228,17 @@ body {
   box-shadow: 0 0 8px var(--accent-gold);
 }
 
+body.light .symbol-opt {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+}
+
+body.light .symbol-opt.active {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: var(--accent-gold);
+}
+
 .start-btn {
   width: 100%;
   background: var(--btn-bg);
@@ -283,7 +258,6 @@ body {
   filter: brightness(1.05);
 }
 
-/* ===== GAME SCREEN ===== */
 .duel-row {
   display: flex;
   align-items: center;
@@ -362,6 +336,12 @@ body {
   border-color: var(--accent-gold);
 }
 
+body.light .cell {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
 .turn-indicator {
   text-align: center;
   background: rgba(0, 0, 0, 0.3);
@@ -371,6 +351,11 @@ body {
   font-weight: 500;
   color: var(--text-secondary);
   margin: 0.8rem 0;
+}
+
+body.light .turn-indicator {
+  background: rgba(0, 0, 0, 0.05);
+  color: #4b5563;
 }
 
 .action-row {
@@ -397,7 +382,16 @@ body {
   transform: translateY(-2px);
 }
 
-/* ===== CELEBRATION MODAL - PREMIUM ===== */
+body.light .sec-btn {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+}
+
+body.light .sec-btn:hover {
+  background: #f3f4f6;
+}
+
 .celeb-modal {
   position: fixed;
   inset: 0;
@@ -516,7 +510,6 @@ body {
   pointer-events: none;
 }
 
-/* ===== FOOTER ===== */
 .game-footer {
   text-align: center;
   padding: 0.8rem 1rem;
@@ -543,7 +536,6 @@ body {
   font-size: 0.9rem;
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 600px) {
   body { padding: 0.8rem; }
   .screen { padding: 1rem; }
@@ -570,7 +562,6 @@ body {
   .action-row { flex-direction: column; }
 }
 
-/* Light theme celebration adjustments */
 body.light .celeb-content {
   background: #fff8f0;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
