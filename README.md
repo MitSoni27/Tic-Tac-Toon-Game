@@ -1,12 +1,6 @@
 # ⚡ TIC-TAC-TOON | Modern Duel Arena
 
-![Game Screenshot](https://via.placeholder.com/800x400?text=Tic+Tac+Toon+Game)
-
 A premium, responsive Tic Tac Toe game with **dark/light theme**, **player customization**, **celebration animations**, and a sleek glassmorphism UI. Built with pure HTML, CSS, and JavaScript.
-
-## 🎮 Live Demo
-
-[Play the Game Here](https://your-username.github.io/tic-tac-toon-game/)
 
 ## ✨ Features
 
@@ -37,3 +31,26 @@ A premium, responsive Tic Tac Toe game with **dark/light theme**, **player custo
 - **JavaScript** - Game logic, DOM manipulation, Theme switching
 
 ## 📁 Project Structure
+tic-tac-toon-game/
+├── index.html # Main HTML structure
+├── style.css # All styles & themes
+├── script.js # Game logic & interactions
+└── README.md # Project documentation
+
+🎊 Celebration Features
+🎉 Confetti Rain - Colorful particles fall from top
+
+🎁 Animated Gift Box - Bouncing celebration icon
+
+🏆 Winner Message - Gradient text with player name
+
+🎈 Party Emojis - Animated bouncing characters
+
+🔧 Game Logic
+Win Detection - Checks all 8 possible winning combinations
+
+Draw Detection - Detects when board is full with no winner
+
+Turn Management - Alternates between X and O automatically
+
+Game Reset - Rematch without changing player names
