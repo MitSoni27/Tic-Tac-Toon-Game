@@ -28,20 +28,70 @@
 
 body.light {
   --bg-main: linear-gradient(135deg, #fef9f0 0%, #fff5e8 100%);
-  --surface: rgba(255, 250, 240, 0.9);
+  --surface: rgba(255, 250, 240, 0.92);
   --surface-solid: #fef3e2;
   --text-primary: #1f2937;
   --text-secondary: #4b5563;
-  --text-muted: #9ca3af;
+  --text-muted: #374151;
   --accent-x: #dc2626;
   --accent-o: #2563eb;
-  --border: rgba(0, 0, 0, 0.1);
-  --card-bg: rgba(255, 245, 235, 0.85);
-  --cell-bg: rgba(255, 250, 245, 0.9);
+  --accent-gold: #f59e0b;
+  --accent-purple: #8b5cf6;
+  --border: rgba(0, 0, 0, 0.12);
+  --card-bg: rgba(255, 245, 235, 0.9);
+  --cell-bg: rgba(255, 250, 245, 0.92);
   --shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   --glow: 0 0 12px rgba(220, 38, 38, 0.3);
   --btn-bg: linear-gradient(135deg, #f97316, #a855f7);
-  --footer-bg: rgba(0, 0, 0, 0.08);
+  --footer-bg: rgba(0, 0, 0, 0.04);
+}
+
+/* Light theme input specific */
+body.light .player-input {
+  background: white;
+  border: 1px solid #d1d5db;
+  color: #1f2937;
+}
+
+body.light .player-input::placeholder {
+  color: #9ca3af;
+  opacity: 1;
+}
+
+body.light .player-input:focus {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+}
+
+body.light .symbol-opt {
+  background: white;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+}
+
+body.light .symbol-opt.active {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: var(--accent-gold);
+}
+
+body.light .cell {
+  background: white;
+  border: 1px solid #e5e7eb;
+}
+
+body.light .turn-indicator {
+  background: rgba(0, 0, 0, 0.05);
+  color: #4b5563;
+}
+
+body.light .sec-btn {
+  background: white;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+}
+
+body.light .sec-btn:hover {
+  background: #f3f4f6;
 }
 
 body {
