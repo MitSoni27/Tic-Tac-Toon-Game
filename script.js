@@ -3,8 +3,8 @@ let boardState = ['', '', '', '', '', '', '', '', ''];
 let currentPlayerSym = 'X';
 let gameActive = true;
 let players = {
-  p1: { name: 'Phoenix', symbol: 'X', emoji: '🎭' },
-  p2: { name: 'Nova', symbol: 'O', emoji: '🎪' }
+  p1: { name: 'Player 1', symbol: 'X', emoji: '🎭' },
+  p2: { name: 'Player 2', symbol: 'O', emoji: '🎪' }
 };
 
 // DOM Elements
@@ -39,8 +39,8 @@ function renderBoard() {
 
 // Update UI with names & symbols
 function updateGameUI() {
-  leftName.textContent = players.p1.name;
-  rightName.textContent = players.p2.name;
+  leftName.textContent = players.p1.name || 'Player 1';
+  rightName.textContent = players.p2.name || 'Player 2';
   leftSymbolBadge.textContent = players.p1.symbol;
   rightSymbolBadge.textContent = players.p2.symbol;
   leftEmoji.textContent = players.p1.emoji || '🎭';
@@ -65,51 +65,66 @@ function checkWinner() {
   return null;
 }
 
-// Show Celebration with Confetti
+// Show Celebration with Confetti - Premium Version
 function showCelebration(winnerSymbol) {
   const winner = winnerSymbol === players.p1.symbol ? players.p1 : players.p2;
   winnerTitle.innerHTML = `🏆 CONGRATULATIONS! 🏆`;
-  winnerNameDisplay.textContent = `${winner.name} WINS THE DUEL!`;
+  winnerNameDisplay.textContent = `${winner.name} WINS THE DUEL! 👑`;
   celebModal.classList.add('active');
   
-  // Confetti Effect
+  // Premium Confetti Effect
   const confettiArea = document.getElementById('confettiArea');
   confettiArea.innerHTML = '';
-  for (let i = 0; i < 120; i++) {
+  
+  // Multiple confetti types
+  const colors = ['#ff6b6b', '#fbbf24', '#34d399', '#60a5fa', '#f472b6', '#a855f7', '#f97316'];
+  
+  for (let i = 0; i < 180; i++) {
     const conf = document.createElement('div');
     conf.style.position = 'absolute';
-    conf.style.width = Math.random() * 10 + 4 + 'px';
-    conf.style.height = Math.random() * 12 + 6 + 'px';
-    conf.style.background = `hsl(${Math.random() * 360}, 80%, 60%)`;
+    conf.style.width = Math.random() * 12 + 4 + 'px';
+    conf.style.height = Math.random() * 14 + 6 + 'px';
+    conf.style.background = colors[Math.floor(Math.random() * colors.length)];
     conf.style.left = Math.random() * 100 + '%';
     conf.style.top = '-20px';
-    conf.style.borderRadius = '3px';
-    conf.style.opacity = '0.9';
-    conf.style.animation = `fallConfetti ${Math.random() * 2 + 1.5}s linear forwards`;
+    conf.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    conf.style.opacity = Math.random() * 0.8 + 0.5;
+    conf.style.animation = `fallConfetti ${Math.random() * 2.5 + 1.5}s linear forwards`;
+    conf.style.transform = `rotate(${Math.random() * 360}deg)`;
     confettiArea.appendChild(conf);
   }
+  
   const style = document.createElement('style');
-  style.textContent = `@keyframes fallConfetti { 0% { transform: translateY(0) rotate(0deg); } 100% { transform: translateY(100vh) rotate(720deg); opacity: 0; } }`;
+  style.textContent = `
+    @keyframes fallConfetti {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+  `;
   document.head.appendChild(style);
   gameActive = false;
 }
 
 function showDraw() {
   winnerTitle.innerHTML = `🤝 EPIC DRAW! 🤝`;
-  winnerNameDisplay.textContent = `Both warriors fought valiantly!`;
+  winnerNameDisplay.textContent = `Both warriors fought valiantly! 🎭`;
   celebModal.classList.add('active');
   gameActive = false;
-  // confetti for draw too (less)
+  
+  // Confetti for draw
   const confettiArea = document.getElementById('confettiArea');
   confettiArea.innerHTML = '';
-  for (let i = 0; i < 80; i++) {
+  const colors = ['#fbbf24', '#60a5fa', '#f472b6'];
+  
+  for (let i = 0; i < 100; i++) {
     const conf = document.createElement('div');
     conf.style.position = 'absolute';
-    conf.style.width = Math.random() * 8 + 4 + 'px';
-    conf.style.height = Math.random() * 10 + 5 + 'px';
-    conf.style.background = `hsl(${Math.random() * 360}, 70%, 60%)`;
+    conf.style.width = Math.random() * 10 + 4 + 'px';
+    conf.style.height = Math.random() * 12 + 5 + 'px';
+    conf.style.background = colors[Math.floor(Math.random() * colors.length)];
     conf.style.left = Math.random() * 100 + '%';
     conf.style.top = '-20px';
+    conf.style.borderRadius = '2px';
     conf.style.animation = `fallConfetti ${Math.random() * 2 + 1.5}s linear forwards`;
     confettiArea.appendChild(conf);
   }
@@ -151,11 +166,12 @@ function resetGame() {
 }
 
 function startGame() {
-  // Get values from selection
+  // Get values from selection - no default names
   let p1NameVal = document.getElementById('p1Name').value.trim();
   let p2NameVal = document.getElementById('p2Name').value.trim();
-  if (p1NameVal === '') p1NameVal = 'Phoenix';
-  if (p2NameVal === '') p2NameVal = 'Nova';
+  
+  if (p1NameVal === '') p1NameVal = 'Player 1';
+  if (p2NameVal === '') p2NameVal = 'Player 2';
   
   let p1Sym = 'X', p2Sym = 'O';
   const p1Active = document.querySelector('.symbol-group[data-player="1"] .symbol-opt.active');
@@ -187,7 +203,6 @@ function startGame() {
 // Symbol selector logic
 document.querySelectorAll('.symbol-group').forEach(group => {
   const opts = group.querySelectorAll('.symbol-opt');
-  // Set default active based on player
   if (group.getAttribute('data-player') === '1') {
     opts[0].classList.add('active');
   } else {
@@ -204,6 +219,7 @@ document.querySelectorAll('.symbol-group').forEach(group => {
 // Theme Toggle (Dark/Light)
 const themeToggle = document.getElementById('themeToggleBtn');
 const themeIcons = document.querySelectorAll('.theme-icon');
+
 function setTheme(theme) {
   if (theme === 'light') {
     document.body.classList.add('light');
@@ -218,7 +234,8 @@ function setTheme(theme) {
     }
   });
 }
-themeToggle.addEventListener('click', (e) => {
+
+themeToggle.addEventListener('click', () => {
   const isLight = document.body.classList.contains('light');
   if (isLight) {
     setTheme('dark');
@@ -226,7 +243,8 @@ themeToggle.addEventListener('click', (e) => {
     setTheme('light');
   }
 });
-// init theme
+
+// Initialize theme
 setTheme('dark');
 
 // Buttons
@@ -243,6 +261,6 @@ closeCelebBtn.addEventListener('click', () => {
   resetGame();
 });
 
-// initial render
+// Initial render
 renderBoard();
 updateGameUI();
