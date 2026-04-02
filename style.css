@@ -194,8 +194,9 @@ body.light .player-input {
 }
 
 body.light .player-input::placeholder {
-  color: #6b7280;
-  opacity: 1;
+  color: #1f2937 !important;
+  opacity: 1 !important;
+  font-weight: 500;
 }
 
 body.light .player-input:focus {
