@@ -2,6 +2,13 @@
 
 A premium, responsive Tic Tac Toe game with **dark/light theme**, **player customization**, **celebration animations**, and a sleek glassmorphism UI. Built with pure HTML, CSS, and JavaScript.
 
+👨‍💻 Author
+Mit Soni
+
+GitHub: MitSoni27
+
+Project Link:https://mitsoni27.github.io/Tic-Tac-Toon-Game/
+
 ## ✨ Features
 
 | Feature | Description |
