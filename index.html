@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>⚡ TIC-TAC-TOON | Minimal Duel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="game-wrapper">
+  <div class="game-header">
+    <span class="logo">⚡ TIC-TAC-TOON ⚡</span>
+    <div class="theme-switch" id="themeToggleBtn">
+      <span class="theme-icon" data-theme="dark">🌙</span>
+      <span class="theme-icon" data-theme="light">☀️</span>
+    </div>
+  </div>
+
+  <!-- SELECTION SCREEN -->
+  <div id="selectionScreen" class="screen">
+    <div class="players-flex">
+      <div class="player-card">
+        <div class="emoji-badge">🎭</div>
+        <input type="text" id="p1Name" class="player-input" placeholder="Player 1" value="Phoenix">
+        <div class="symbol-group" data-player="1">
+          <div class="symbol-opt" data-sym="X">❌ X</div>
+          <div class="symbol-opt" data-sym="O">⭕ O</div>
+        </div>
+      </div>
+      <div class="player-card">
+        <div class="emoji-badge">🎪</div>
+        <input type="text" id="p2Name" class="player-input" placeholder="Player 2" value="Nova">
+        <div class="symbol-group" data-player="2">
+          <div class="symbol-opt" data-sym="X">❌ X</div>
+          <div class="symbol-opt" data-sym="O">⭕ O</div>
+        </div>
+      </div>
+    </div>
+    <button id="startGameBtn" class="start-btn">✨ START BATTLE ✨</button>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div id="gameScreen" class="screen hidden">
+    <div class="duel-row">
+      <div class="fighter" id="leftFighter">
+        <div class="fighter-emoji" id="leftEmoji">🎭</div>
+        <div class="fighter-name" id="leftName">Phoenix</div>
+        <div class="fighter-symbol" id="leftSymbolBadge">X</div>
+      </div>
+      <div class="vs-badge">⚔️ VS ⚔️</div>
+      <div class="fighter" id="rightFighter">
+        <div class="fighter-emoji" id="rightEmoji">🎪</div>
+        <div class="fighter-name" id="rightName">Nova</div>
+        <div class="fighter-symbol" id="rightSymbolBadge">O</div>
+      </div>
+    </div>
+    <div class="board-grid" id="board"></div>
+    <div class="turn-indicator" id="turnText">🎯 Turn: Phoenix (X)</div>
+    <div class="action-row">
+      <button id="resetGame" class="sec-btn">🔄 Rematch</button>
+      <button id="backToSelect" class="sec-btn">🏠 New Heroes</button>
+    </div>
+  </div>
+</div>
+
+<!-- CELEBRATION MODAL -->
+<div id="celebModal" class="celeb-modal">
+  <div class="celeb-content">
+    <div class="party-emoji">🎉🥳🎊</div>
+    <div class="win-title" id="winnerTitle">CHAMPION!</div>
+    <div id="winnerNameDisplay" style="font-size: 1.2rem; font-weight: 600; margin: 0.5rem 0; color: var(--accent-gold);">Player Name</div>
+    <button id="closeCeleb" class="celeb-close">⚡ PLAY AGAIN ⚡</button>
+    <div id="confettiArea" class="confetti-canvas"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
